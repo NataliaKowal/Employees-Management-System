@@ -17,15 +17,43 @@ class Degree:
         return f"Id: {self.Id}, Name: {self.Name}"
 
 
-
 def list_degrees (DB_path):
-    with sqlite3.connect(DB_path) as con:
-        cur = con.cursor()
-        records = cur.execute("SELECT * FROM Degree").fetchall()
-        print(records)
-        degrees = []
-        for record in records:
-            degrees.append(Degree(record))
+    try: 
+        with sqlite3.connect(DB_path) as con:
+            cur = con.cursor()
+            records = cur.execute("SELECT * FROM Degree").fetchall()
+            degrees = []
+            for record in records:
+                degree = Degree(record)
+                print(degree)
+                degrees.append(degree)
+                
+    except sqlite3.Error as e: 
+        print(f"error: {e}")
 
-        for degree in degrees:
-            print(degree)
+def add_degree (DB_path, name):
+    try: 
+        with sqlite3.connect(DB_path) as con:
+            cur = con.cursor()
+            cur.execute("INSERT INTO Degree (Name) VALUES (?)", (name, ))
+            con.commit()
+    except sqlite3.Error as e: 
+        print(f"error: {e}")
+
+def edit_degree (DB_path, name, Id):
+    try: 
+        with sqlite3.connect(DB_path) as con:
+            cur = con.cursor()
+            cur.execute("UPDATE Degree SET Name = ? WHERE Id = ?", (name, Id,  ))
+            con.commit()
+    except sqlite3.Error as e: 
+        print(f"error: {e}")
+
+def delete_degree (DB_path, Id):
+    try: 
+        with sqlite3.connect(DB_path) as con:
+            cur = con.cursor()
+            cur.execute("DELETE FROM Degree WHERE Id = ?", (Id, ))
+            con.commit()
+    except sqlite3.Error as e: 
+        print(f"error: {e}")
