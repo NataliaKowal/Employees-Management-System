@@ -18,6 +18,18 @@ class Department:
 
 
 def list_department (DB_path):
+    """
+    Opis: 
+        Funkcja list_department służy do wyświetlania listy wszystkich działów zapisanych w bazie danych. \n
+        Dla każdego działu wyświetlane są wszystkie dostępne informacje. \n
+        Jest to przydatne do przeglądania zawartości tabeli Department i sprawdzania, jakie działy są obecnie zarejestrowane w systemie.
+    
+    Autor: Natalia Kowal
+    
+    Argumenty:
+    - DB_path (str): Ścieżka do bazy danych, z którą funkcja nawiązuje połączenie.
+
+    """
     try: 
         with sqlite3.connect(DB_path) as con:
             cur = con.cursor()
@@ -31,7 +43,20 @@ def list_department (DB_path):
     except sqlite3.Error as e: 
         print(f"error: {e}")
 
+
 def add_department (DB_path, name):
+    """
+    Opis: 
+        Funkcja add_department służy do dodawania nowego działu do bazy danych. \n
+        Operacja ta polega na wstawieniu nowego rekordu do tabeli Department, zawierającego nazwę nowo dodanego działu. \n
+        Jest to przydatne do rozszerzania struktury organizacyjnej firmy poprzez dodawanie nowych działów.
+    
+    Autor: Natalia Kowal
+    
+    Argumenty:
+    - DB_path (str): Ścieżka do bazy danych, z którą funkcja nawiązuje połączenie.
+    - name (str): Nazwa nowo dodawanego działu.
+    """
     try: 
         with sqlite3.connect(DB_path) as con:
             cur = con.cursor()
@@ -40,7 +65,20 @@ def add_department (DB_path, name):
     except sqlite3.Error as e: 
         print(f"error: {e}")
 
+
 def edit_department (DB_path, name, Id):
+    """
+    Opis: 
+        Funkcja edit_department służy do aktualizowania nazwy istniejącego działu w bazie danych na podstawie podanego unikalnego identyfikatora (Id).\n
+        Pozwala na zmianę nazwy działu, co jest przydatne w przypadku reorganizacji lub błędów w nazewnictwie.
+
+        
+    Autor: Natalia Kowal
+    
+    Argumenty:
+    - DB_path (str): Ścieżka do bazy danych, z którą funkcja nawiązuje połączenie.
+    - Id (int): Unikalny identyfikator działu, który ma zostać usunięty z bazy danych.
+    """
     try: 
         with sqlite3.connect(DB_path) as con:
             cur = con.cursor()
