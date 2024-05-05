@@ -1,4 +1,5 @@
 from Department import *
+from Degree import *
 
 # list_degrees("./DB/Employees.db")
 # add_degree("./DB/Employees.db", "Techniczne")
@@ -11,10 +12,12 @@ from Department import *
 # list_degrees("./DB/Employees.db")
 # delete_degree("./DB/Employees.db", 5)
 # list_degrees("./DB/Employees.db")
-add_department("./DB/Employees.db", "Socjalny")
-add_department("./DB/Employees.db", "Dyrektor")
-add_department("./DB/Employees.db", "Kuchnia")
-list_department("./DB/Employees.db")
+# add_department("./DB/Employees.db", "Socjalny")
+# add_department("./DB/Employees.db", "Dyrektor")
+# add_department("./DB/Employees.db", "Kuchnia")
+# list_department("./DB/Employees.db")
 # edit_department("./DB/Employees.db", "Kuchenka", 3)
-delete_department("./DB/Employees.db",2)
-list_department("./DB/Employees.db")
+# delete_department("./DB/Employees.db",2)
+# list_department("./DB/Employees.db")
+
+print(get_all_degrees("./DB/Employees.db"))

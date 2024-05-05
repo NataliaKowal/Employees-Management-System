@@ -46,15 +46,20 @@ nav a.router-link-exact-active {
 
 .content {
   flex-grow: 1;
-  padding: 20px;
-  background-color: #add8e6; /* Jasnoniebieskie tło dla głównej zawartości */
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center; /* Centrowanie tekstu */
+  background-color: #add8e6; /* Jasnoniebieskie tło dla głównej zawartości */
 }
 
 .main-content {
   max-width: 600px; /* Ograniczenie szerokości treści, aby była bardziej czytelna */
+}
+
+h1 {
+  text-align: center; /* Wyśrodkowanie tekstu */
+  margin-top: 20px; /* Dodatkowy margines górny, jeśli potrzebny */
+  width: 100%; /* Zapewnia, że tytuł jest wyśrodkowany w kontenerze */
 }
 </style>

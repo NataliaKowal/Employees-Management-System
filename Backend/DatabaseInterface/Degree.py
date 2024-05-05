@@ -1,4 +1,5 @@
 import sqlite3
+import json
 
 class Degree:
     def __init__(self):
@@ -17,7 +18,7 @@ class Degree:
         return f"Id: {self.Id}, Name: {self.Name}"
 
 
-def list_degrees (DB_path):
+def get_all_degrees (DB_path):
     """
     Opis: 
         Funkcja list_degrees służy do wyświetlania listy wszystkich stopni naukowych zapisanych w bazie danych. \n
@@ -33,19 +34,18 @@ def list_degrees (DB_path):
     try: 
         with sqlite3.connect(DB_path) as con:
             cur = con.cursor()
-            records = cur.execute("SELECT * FROM Degree").fetchall()
-            degrees = []
-            for record in records:
-                degree = Degree(record)
-                print(degree)
-                degrees.append(degree)
-                
+            rows = cur.execute("SELECT * FROM Degree").fetchall()
+            columns = [description[0] for description in cur.description]
+            resoults = [dict(zip(columns, row)) for row in rows]
+            json_str = json.dumps(resoults, indent=4)
+            print(json_str)
+            return json_str
     except sqlite3.Error as e: 
         print(f"error: {e}")
 
 
 def add_degree (DB_path, name):
-     """
+    """
     Opis:
         Funkcja add_degree służy do dodawania nowego stopnia naukowego do bazy danych.\n
         Operacja ta polega na wstawieniu nowego rekordu do tabeli Degree, zawierającego nazwę nowo dodanego stopnia naukowego.\n
@@ -92,7 +92,7 @@ def edit_degree (DB_path, name, Id):
 
 
 def delete_degree (DB_path, Id):
-     """
+    """
     Opis:
         Funkcja delete_degree służy do usuwania stopnia naukowego z bazy danych na podstawie podanego unikalnego identyfikatora (Id).\n
         Operacja ta usuwa wszystkie informacje związane ze stopniem naukowym o określonym Id z tabeli Degree.\n

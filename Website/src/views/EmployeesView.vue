@@ -70,7 +70,7 @@ export default {
     }
   },
   mounted() {
-    this.filteredEmployees = this.employees; // Inicjalizacja filtrowanych pracowników
+    this.filteredEmployees = this.employees;
   },
   methods: {
     filterEmployees() {
@@ -92,24 +92,41 @@ export default {
 </script>
 
 <style>
-/* Style dla tabeli */
 table {
   width: 100%;
   border-collapse: collapse;
+  font-family: Arial, sans-serif; /* Smoother font */
 }
+
 th, td {
-  border: 1px solid black;
+  border: 1px solid #ccc;
   padding: 8px;
   text-align: left;
 }
+
+th {
+  background-color: #779fd4; /* Green background for headers */
+  color: white; /* White text for headers */
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #f2f2f2; /* Light grey background for odd rows */
+}
+
+tbody tr:nth-child(even) {
+  background-color: #ffffff; /* White background for even rows */
+}
+
 input {
   width: 100%;
-  box-sizing: border-box; /* Aby padding nie wpływał na szerokość */
-  padding: 4px;
-  margin-top: 4px;
+  padding: 8px;
+  margin-bottom: 20px;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
+
 h1 {
-  text-align: center; /* Wyśrodkowanie tekstu */
-  margin-top: 20px; /* Dodatkowy margines na górze dla lepszego wyglądu */
+  text-align: center; 
+  margin-top: 20px; 
+  margin-bottom: 20px; /* Added bottom margin for spacing */
 }
 </style>
