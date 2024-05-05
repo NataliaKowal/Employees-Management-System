@@ -92,10 +92,10 @@ export default {
 </script>
 
 <style>
-table {
+/* table {
   width: 100%;
   border-collapse: collapse;
-  font-family: Arial, sans-serif; /* Smoother font */
+  font-family: Arial, sans-serif;
 }
 
 th, td {
@@ -105,28 +105,28 @@ th, td {
 }
 
 th {
-  background-color: #779fd4; /* Green background for headers */
-  color: white; /* White text for headers */
+  background-color: #779fd4; 
+  color: white;
 }
 
 tbody tr:nth-child(odd) {
-  background-color: #f2f2f2; /* Light grey background for odd rows */
+  background-color: #f2f2f2;
 }
 
 tbody tr:nth-child(even) {
-  background-color: #ffffff; /* White background for even rows */
+  background-color: #ffffff;
 }
 
-input {
+/* input {
   width: 100%;
   padding: 8px;
   margin-bottom: 20px;
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
-}
-
+  box-sizing: border-box; 
+} */
+/*
 h1 {
   text-align: center; 
   margin-top: 20px; 
-  margin-bottom: 20px; /* Added bottom margin for spacing */
-}
+  margin-bottom: 20px;
+} */
 </style>

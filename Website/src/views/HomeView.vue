@@ -21,7 +21,7 @@ nav {
   align-items: flex-start;
   justify-content: start;
   padding: 20px;
-  background-color: #0056b3; /* Granatowy kolor paska nawigacyjnego */
+  background-color: #5F9EA0; /* Granatowy kolor paska nawigacyjnego */
   color: white;
   height: 100vh;
   width: 200px; /* szerokość paska nawigacyjnego */
@@ -36,11 +36,11 @@ nav a {
 }
 
 nav a:hover {
-  background-color: #007bff; /* Nieco jaśniejszy niebieski dla efektu hover */
+  background-color: #7099c0; /* Nieco jaśniejszy niebieski dla efektu hover */
 }
 
 nav a.router-link-exact-active {
-  background-color: #003366; /* Ciemniejszy niebieski dla aktywnego linku */
+  background-color: #008B8B; /* Ciemniejszy niebieski dla aktywnego linku */
   color: white;
 }
 

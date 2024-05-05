@@ -1,30 +1,82 @@
 <template>
   <div>
     <h1>Departments View</h1>
-    <input type="text" v-model="searchQuery" placeholder="Filter..." />
+    <div class="filter-and-add-bar">
+      <input class="filter-input" type="text" v-model="searchQuery" placeholder="Filter..." />
+      <button class="add-record-button" @click="showAddModal = true">Add New Department</button>
+    </div>
     <table>
       <thead>
         <tr>
           <th>Id</th>
           <th>Name</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="department in filteredDepartments" :key="department.id">
           <td>{{ department.id }}</td>
           <td>{{ department.name }}</td>
+          <td>
+            <div class="edit-delete-container">
+              <button class="edit-record-button" @click="showEdit(department)">Edit Department</button>
+              <button class="delete-record-button" @click="showDelete(department)">Delete Department</button>
+            </div>
+          </td>
         </tr>
       </tbody>
     </table>
+    <!-- Add Modal -->
+    <div v-if="showAddModal">
+      <div class="modal">
+        <div class="modal-content">
+          <span class="close" @click="showAddModal = false">&times;</span>
+          <form @submit.prevent="addDepartment">
+            <label for="Name">Department Name:</label>
+            <input type="text" id="Name" v-model="newDepartmentName" required>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Edit Modal -->
+    <div v-if="showEditModal">
+      <div class="modal">
+        <div class="modal-content">
+          <span class="close" @click="showEditModal = false">&times;</span>
+          <form @submit.prevent="editDepartment">
+            <label for="Name">Department Name:</label>
+            <input type="text" id="Name" v-model="currentDepartment.name" required>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Delete Modal -->
+    <div v-if="showDeleteModal">
+      <div class="modal">
+        <div class="modal-content">
+          <span class="close" @click="showDeleteModal = false">&times;</span>
+          <p>Are you sure you want to delete this department: {{ currentDepartment.name }}?</p>
+          <button @click="deleteDepartment">Delete</button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   data() {
     return {
       departments: [],
-      searchQuery: ''
+      searchQuery: '',
+      showAddModal: false,
+      showEditModal: false,
+      showDeleteModal: false,
+      currentDepartment: {}
     };
   },
   computed: {
@@ -39,74 +91,218 @@ export default {
       );
     }
   },
+  methods: {
+    fetchDepartments() {
+      axios.get('http://localhost:1234/get_all_departments')
+        .then(response => {
+          this.departments = response.data;
+        })
+        .catch(error => {
+          console.error('Error fetching departments:', error);
+        });
+    },
+    addDepartment() {
+      axios.post('http://localhost:1234/add_department', {
+        name: this.newDepartmentName
+      })
+        .then(() => {
+          this.showAddModal = false;
+          this.currentDepartment = {}; 
+          this.fetchDepartments();
+        })
+        .catch(error => {
+          console.error('Error adding new department:', error);
+        });
+    },
+    showEdit(department) {
+      this.currentDepartment = {...department};
+      this.showEditModal = true;
+    },
+    editDepartment() {
+      axios.put(`http://localhost:1234/edit_department/${this.currentDepartment.id}`, {
+        name: this.currentDepartment.name
+      })
+        .then(() => {
+          this.showEditModal = false;
+          this.currentDepartment = {}; 
+          this.fetchDepartments();
+        })
+        .catch(error => {
+          console.error('Error editing department:', error);
+        });
+    },
+    showDelete(department) {
+      this.currentDepartment = {...department};
+      this.showDeleteModal = true;
+    },
+    deleteDepartment() {
+      axios.delete(`http://localhost:1234/delete_department/${this.currentDepartment.id}`)
+        .then(() => {
+          this.showDeleteModal = false;
+          this.currentDepartment = {}; 
+          this.fetchDepartments();
+        })
+        .catch(error => {
+          console.error('Error deleting department:', error);
+        });
+    },
+  },
   mounted() {
     this.fetchDepartments();
   },
-  methods: {
-    fetchDepartments() {
-      this.departments = [
-        { id: 1, name: "Management" },
-        { id: 2, name: "Human Resources (HR)" },
-        { id: 3, name: "Finance" },
-        { id: 4, name: "Marketing" },
-        { id: 5, name: "Sales" },
-        { id: 6, name: "Customer Service" },
-        { id: 7, name: "IT (Information Technology)" },
-        { id: 8, name: "Research and Development (R&D)" },
-        { id: 9, name: "Production" },
-        { id: 10, name: "Logistics" },
-        { id: 11, name: "Purchasing" },
-        { id: 12, name: "Quality" },
-        { id: 13, name: "Legal" },
-        { id: 14, name: "Administration" },
-        { id: 15, name: "Information Security" },
-        { id: 16, name: "Education and Training" },
-        { id: 17, name: "Internal Communication" },
-        { id: 18, name: "Sustainable Development" },
-        { id: 19, name: "Innovation" },
-        { id: 20, name: "Investor Relations" }
-      ];
-    }
-  }
 }
 </script>
 
 <style>
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: Arial, sans-serif; /* Smoother font */
+.main {
+	padding-left: 20px;
+	padding-right: 20px;
+	width: 100%;
 }
 
-th, td {
-  border: 1px solid #ccc;
-  padding: 8px;
-  text-align: left;
+.filer-and-add-bar {
+	display: grid;
+	grid-template-columns: 80% 20%;
+	padding-bottom: 10px;
+	height: 30px;
 }
 
-th {
-  background-color: #779fd4; /* Green background for headers */
-  color: white; /* White text for headers */
+.filer-input {
+	margin-right: 5px;
 }
 
-tbody tr:nth-child(odd) {
-  background-color: #f2f2f2; /* Light grey background for odd rows */
+.edit-delete-container {
+	display: grid;
+	grid-template-columns: 50% 50%;
 }
 
-tbody tr:nth-child(even) {
-  background-color: #ffffff; /* White background for even rows */
+.deegree-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 10px 0;
+	font-size: 0.9em;
+	font-family: sans-serif;
+	min-width: 400px;
+	box-shadow: 0 0 20px rgba(0,0,0,0.15);
 }
 
-input {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 20px;
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+.deegree-table thead tr {
+	background-color: #4386dd;
+	color: #ffffff;
+	text-align: left;
 }
 
-h1 {
-  text-align: center; 
-  margin-top: 20px; 
-  margin-bottom: 20px; /* Added bottom margin for spacing */
+.deegree-table th,
+.deegree-table td {
+	padding: 12px 15px;
+}
+
+.deegree-table tbody tr {
+	border-bottom: 1px solid #dddddd;
+}
+
+.deegree-table tbody tr:nth-of-type(even) {
+	background-color: #f3f3f3;
+}
+
+.deegree-table tbody tr:last-of-type {
+	border-bottom: 2px solid #4386dd;
+}
+
+.deegree-table tbody tr.active-row {
+	font-weight: bold;
+	color: #009879;
+}
+
+.deegree-table th:nth-child(1), 
+.deegree-table tr:nth-child(1) {
+	width: 20%;
+}
+
+.deegree-table th:nth-child(2), 
+.deegree-table tr:nth-child(2) {
+	width: 60%;
+}
+
+.deegree-table th:nth-child(3), 
+.deegree-table tr:nth-child(3) {
+	width: 20%;
+}
+
+.modal {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal-content {
+	background: white;
+	padding: 20px;
+	border-radius: 5px;
+}
+
+.close {
+	float: right;
+	cursor: pointer;
+}
+
+.add-record-button {
+	background-color: #93c768; 
+	border: none;
+	color: white;
+	text-align: center;
+	height: 100%;
+	text-decoration: none;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	margin-left: 5px;
+}
+
+.add-record-button:hover {
+	background-color: #48d65b;
+}
+
+.edit-record-button {
+	padding-left: 10px;
+	background-color: #d1cf3d;
+	border: none;
+	color: white;
+	padding: 5px 15px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 0px 2px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.edit-record-button:hover {
+	background-color: #ebac00;
+}
+
+.delete-record-button {
+	padding-left: 10px;
+	background-color: #df4a4a; 
+	color: white;
+	padding: 5px 15px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 0px 2px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.delete-record-button:hover {
+	background-color: #9e1e1e;
 }
 </style>
