@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div  class="main">
     <h1>Departments View</h1>
     <div class="filter-and-add-bar">
       <input class="filter-input" type="text" v-model="searchQuery" placeholder="Filter..." />
       <button class="add-record-button" @click="showAddModal = true">Add New Department</button>
     </div>
-    <table>
+    <table class="department-table">
       <thead>
         <tr>
           <th>Id</th>
@@ -15,8 +15,8 @@
       </thead>
       <tbody>
         <tr v-for="department in filteredDepartments" :key="department.id">
-          <td>{{ department.id }}</td>
-          <td>{{ department.name }}</td>
+          <td>{{ department.Id }}</td>
+          <td>{{ department.Name }}</td>
           <td>
             <div class="edit-delete-container">
               <button class="edit-record-button" @click="showEdit(department)">Edit Department</button>
@@ -119,18 +119,20 @@ export default {
       this.showEditModal = true;
     },
     editDepartment() {
-      axios.put(`http://localhost:1234/edit_department/${this.currentDepartment.id}`, {
-        name: this.currentDepartment.name
-      })
-        .then(() => {
-          this.showEditModal = false;
-          this.currentDepartment = {}; 
-          this.fetchDepartments();
-        })
-        .catch(error => {
-          console.error('Error editing department:', error);
-        });
-    },
+    axios.post(`http://localhost:1234/edit_department`, {
+    id: this.currentDepartment.id,
+    name: this.currentDepartment.name
+  })
+    .then(() => {
+      this.showEditModal = false;
+      this.currentDepartment = {}; 
+      this.fetchDepartments();
+    })
+    .catch(error => {
+      console.error('Error editing department:', error);
+    });
+},
+
     showDelete(department) {
       this.currentDepartment = {...department};
       this.showDeleteModal = true;
@@ -160,7 +162,7 @@ export default {
 	width: 100%;
 }
 
-.filer-and-add-bar {
+.filter-and-add-bar {
 	display: grid;
 	grid-template-columns: 80% 20%;
 	padding-bottom: 10px;
@@ -176,7 +178,7 @@ export default {
 	grid-template-columns: 50% 50%;
 }
 
-.deegree-table {
+.department-table {
 	width: 100%;
 	border-collapse: collapse;
 	margin: 10px 0;
@@ -186,46 +188,46 @@ export default {
 	box-shadow: 0 0 20px rgba(0,0,0,0.15);
 }
 
-.deegree-table thead tr {
+.department-table thead tr {
 	background-color: #4386dd;
 	color: #ffffff;
 	text-align: left;
 }
 
-.deegree-table th,
-.deegree-table td {
+.department-table th,
+.department-table td {
 	padding: 12px 15px;
 }
 
-.deegree-table tbody tr {
+.department-table tbody tr {
 	border-bottom: 1px solid #dddddd;
 }
 
-.deegree-table tbody tr:nth-of-type(even) {
+.department-table tbody tr:nth-of-type(even) {
 	background-color: #f3f3f3;
 }
 
-.deegree-table tbody tr:last-of-type {
+.department-table tbody tr:last-of-type {
 	border-bottom: 2px solid #4386dd;
 }
 
-.deegree-table tbody tr.active-row {
+.department-table tbody tr.active-row {
 	font-weight: bold;
 	color: #009879;
 }
 
-.deegree-table th:nth-child(1), 
-.deegree-table tr:nth-child(1) {
+.department-table th:nth-child(1), 
+.department-table tr:nth-child(1) {
 	width: 20%;
 }
 
-.deegree-table th:nth-child(2), 
-.deegree-table tr:nth-child(2) {
+.department-table th:nth-child(2), 
+.department-table tr:nth-child(2) {
 	width: 60%;
 }
 
-.deegree-table th:nth-child(3), 
-.deegree-table tr:nth-child(3) {
+.department-table th:nth-child(3), 
+.department-table tr:nth-child(3) {
 	width: 20%;
 }
 

@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from DatabaseInterface.Degree import *
+from DatabaseInterface.Department import *
 
 app = Flask(__name__, static_folder='.', template_folder='.')
 
@@ -46,7 +47,42 @@ def server_delete_degree():
         return jsonify({'message': 'Usunięto rekord'}), 200
     else:
         return jsonify({'error': 'Nie usunięto rekorku'}), 400
+    
+@app.route("/get_all_departments")
+def server_get_all_departemnts():
+    return get_all_departments("./DB/Employees.db")
+    
+@app.route("/add_department", methods=['POST'])
+def server_add_department():
+    data = request.json
+    Name = data.get('Name')
+    if Name != None:
+        add_department("./DB/Employees.db", Name)
+        return jsonify({'message': 'Dodano nowy rekord'}), 200
+    else:
+        return jsonify({'error': 'Nie dodano nowego rekorku'}), 400
 
+@app.route("/delete_department", methods=['POST'])
+def server_delete_department():
+    data = request.json
+    Id = data.get('Id')
+    if Id != None:
+        delete_degree("./DB/Employees.db", Id)
+        return jsonify({'message': 'Usunieto rekord'}), 200
+    else:
+        return jsonify({'error': 'Nie Usunieto rekorku'}), 400
+    
+@app.route("/edit_department", methods=['POST'])
+def server_edit_department():
+    data = request.json
+    Id = data.get('Id')
+    Name = data.get('Name')
+    if Id != None and Name != None:
+        edit_department("./DB/Employees.db", Name, Id)  # Załóżmy, że ta funkcja istnieje
+        return jsonify({'message': 'Edytowano rekord'}), 200
+    else:
+        return jsonify({'error': 'Nie edytowano rekorku'}), 400
+    
 if __name__ == '__main__':
     # Zmiana portu na 12345
     app.run(host="0.0.0.0", port=1234)

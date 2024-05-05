@@ -1,4 +1,5 @@
 import sqlite3
+import json
 
 class Department:
     def __init__(self):
@@ -17,7 +18,7 @@ class Department:
         return f"Id: {self.Id}, Name: {self.Name}"
 
 
-def list_department (DB_path):
+def get_all_departments (DB_path):
     """
     Opis: 
         Funkcja list_department służy do wyświetlania listy wszystkich działów zapisanych w bazie danych. \n
@@ -33,13 +34,12 @@ def list_department (DB_path):
     try: 
         with sqlite3.connect(DB_path) as con:
             cur = con.cursor()
-            records = cur.execute("SELECT * FROM Department").fetchall()
-            departments = []
-            for record in records:
-                department = Department(record)
-                print(department)
-                departments.append(department)
-                
+            rows = cur.execute("SELECT * FROM Department").fetchall()
+            columns = [description[0] for description in cur.description]
+            resoults = [dict(zip(columns, row)) for row in rows]
+            json_str = json.dumps(resoults, indent=4)
+            print(json_str)
+            return json_str
     except sqlite3.Error as e: 
         print(f"error: {e}")
 
