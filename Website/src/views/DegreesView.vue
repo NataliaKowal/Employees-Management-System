@@ -87,7 +87,7 @@ export default {
 			const query = this.searchQuery.toLowerCase();
 			return this.degrees.filter(degree =>
 				degree.Name.toLowerCase().includes(query) ||
-				degree.id.toString().includes(query)
+				degree.Id.toString().includes(query)
 			);
 		}
 	},
@@ -190,7 +190,7 @@ export default {
 }
 
 .deegree-table thead tr {
-	background-color: #4386dd;
+	background-color: #dd8143;
 	color: #ffffff;
 	text-align: left;
 }
@@ -209,7 +209,7 @@ export default {
 }
 
 .deegree-table tbody tr:last-of-type {
-	border-bottom: 2px solid #4386dd;
+	border-bottom: 2px solid #dd8143;
 }
 
 .deegree-table tbody tr.active-row {

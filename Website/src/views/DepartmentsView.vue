@@ -86,8 +86,8 @@ export default {
       }
       const query = this.searchQuery.toLowerCase();
       return this.departments.filter(department =>
-        department.name.toLowerCase().includes(query) ||
-        department.id.toString().includes(query)
+        department.Name.toLowerCase().includes(query) ||
+        department.Id.toString().includes(query)
       );
     }
   },

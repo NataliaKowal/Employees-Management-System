@@ -1,4 +1,5 @@
 import sqlite3
+import json
 
 class Employee:
     def __init__(self):
@@ -21,7 +22,7 @@ class Employee:
         self.Room_number = new_Room_number
         self.Salary = new_Salary
     
-def list_employees (DB_path):
+def get_all_employees (DB_path):
     """
     Opis: 
         Funkcja list_employees służy do wyświetlania listy wszystkich pracowników zapisanych w bazie danych. \n
@@ -40,14 +41,12 @@ def list_employees (DB_path):
     try: 
         with sqlite3.connect(DB_path) as con:
             cur = con.cursor()
-            records = cur.execute("SELECT * FROM Employees").fetchall()
-            employees = []
-            print("Employees in database:")
-            for record in records:
-                employee = Employee(record)
-                print(f" - {employee}")
-                employees.append(employee)
-                
+            rows = cur.execute("SELECT * FROM Employees").fetchall()
+            columns = [description[0] for description in cur.description]
+            resoults = [dict(zip(columns, row)) for row in rows]
+            json_str = json.dumps(resoults, indent=4)
+            print(json_str)
+            return json_str
     except sqlite3.Error as e: 
         print(f"error: {e}")
 
