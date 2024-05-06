@@ -15,71 +15,66 @@ body{
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Bazowy styl dla wszystkich przycisków */
+button {
+    padding: 10px 15px;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 0px 5px;
+}
+
+/* Styl dla przycisku dodawania */
 .add-record-button {
-	background-color: #87C38F; 
-	border: none;
-	color: white;
-	text-align: center;
-	height: 100%;
-	text-decoration: none;
-	font-size: 16px;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
-	margin-left: 5px;
+    background-color: #4CAF50; /* Zmieniono na bardziej żywy odcień zieleni */
 }
 
 .add-record-button:hover {
-	background-color: #87C38F;
+    background-color: #45a049; /* Ciemniejszy odcień dla hover */
 }
 
+/* Styl dla przycisku edycji */
 .edit-record-button {
-	padding-left: 10px;
-	background-color: #F8DE7E;
-	border: none;
-	color: white;
-	padding: 5px 15px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 16px;
-	margin: 0px 2px;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
+    background-color: #FFC107; /* Zmieniono na bardziej żywy odcień żółtego */
 }
 
 .edit-record-button:hover {
-	background-color: #F4F0BB;
+    background-color: #ffb300; /* Ciemniejszy odcień dla hover */
 }
 
+/* Styl dla przycisku usuwania */
 .delete-record-button {
-	padding-left: 10px;
-	background-color: #DA2C38; 
-	color: white;
-	padding: 5px 15px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 16px;
-	margin: 0px 2px;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
+    background-color: #f44336; /* Zmieniono na bardziej żywy odcień czerwieni */
 }
 
 .delete-record-button:hover {
-	background-color: #DA2C38;
+    background-color: #e53935; /* Ciemniejszy odcień dla hover */
 }
 
-.submit-btn{
-    background-color: #87C38F; 
-    color: white; 
-    padding: 15px 50px; 
-    font-size: 16px; 
-    border: none; 
-    border-radius: 5px;
-    cursor: pointer; 
-    transition: background-color 0.3s, transform 0.2s; 
-    display: block; 
-    margin: 0 auto; 
-    width: 50%;
+/* Styl dla przycisków w modalach */
+.submit-btn, .cancel-btn {
+    padding: 15px 20px;
+    width: 80%; /* Zwiększona szerokość dla lepszego dopasowania */
+    margin: 20px auto; /* Zwiększony margines dla lepszego wyśrodkowania */
+}
+
+.submit-btn {
+    background-color: #4CAF50; /* Ujednolicenie koloru z przyciskiem dodawania */
+}
+
+.submit-btn:hover {
+    background-color: #45a049; /* Ciemniejszy odcień dla hover */
+}
+
+.cancel-btn {
+    background-color: #f44336; /* Ujednolicenie koloru z przyciskiem usuwania */
+}
+
+.cancel-btn:hover {
+    background-color: #e53935; /* Ciemniejszy odcień dla hover */
 }
 </style>

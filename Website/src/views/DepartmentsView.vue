@@ -255,4 +255,6 @@ export default {
 	float: right;
 	cursor: pointer;
 }
+
+
 </style>
