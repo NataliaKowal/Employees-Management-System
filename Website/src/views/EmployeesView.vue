@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <div class="main"></div>
-    <h1>Widok na pracowników</h1>
+    <h1>View of the employees</h1>
     <div class="filer-and-add-bar">
       <input class="filer-input" type="text" v-model="this.searchQuery" placeholder="Filter..." />
 			<button class="add-record-button" @click="showAddModal = true">Add New Employee</button>
@@ -42,6 +42,7 @@
     <!-- Add Modal -->
     <div v-if="showAddModal" class="modal">
       <div class="modal-content">
+        <h2>Add new employee</h2>
         <span class="close" @click="showAddModal = false">&times;</span>
         <form @submit.prevent="addEmployee">
           <div class="inputs-and-labels-container">
@@ -66,7 +67,7 @@
             <label class = "Working" for="Salary">Employee Salary:</label>
             <input class = "New_Working" type="text" id="Salary" v-model="newEmployee.Salary" required>
           </div>
-          <button type="submit">Submit</button> 
+          <button class="submit-btn" type="submit">Submit</button> 
         </form>
       </div>
     </div>
@@ -288,7 +289,7 @@ mounted() {
 }
 
 .employees-table thead tr {
-    background-color: #779fd4;
+    background-color: #FF8FA3;
     color: #ffffff;
     text-align: left;
 }
@@ -307,7 +308,7 @@ mounted() {
 }
 
 .employees-table tbody tr:last-of-type {
-    border-bottom: 2px solid #779fd4;
+    border-bottom: 2px solid #FF8FA3;
 }
 
 .employees-table tbody tr.active-row {
@@ -373,8 +374,8 @@ mounted() {
 }
 
 .modal-content {
-    background: white;
-    padding: 20px;
+    background: #ffccd5;
+    padding: 25px;
     border-radius: 5px;
     width: 50%;
     height: 50%;
@@ -382,58 +383,18 @@ mounted() {
     overflow-y: auto;
 }
 
+.modal-content input {
+    background-color: #fff0f3;
+    border: 1px solid #ff4d6d;
+    padding: 8px;
+    width: 100%;
+    margin: 5px 0;
+}
+
 .close {
     float: right;
     cursor: pointer;
 }
-
-.add-record-button {
-    background-color: #93c768; 
-    border: none;
-    color: white;
-    text-align: center;
-    height: 100%;
-    text-decoration: none;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-left: 5px;
-}
-
-.add-record-button:hover {
-    background-color: #48d65b;
-}
-
-.edit-record-button,
-.delete-record-button {
-    padding: 5px 15px;
-    border: none;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 0px 2px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.edit-record-button {
-    background-color: #d1cf3d;
-}
-
-.edit-record-button:hover {
-    background-color: #ebac00;
-}
-
-.delete-record-button {
-    background-color: #df4a4a;
-}
-
-.delete-record-button:hover {
-    background-color: #9e1e1e;
-}
-
 .inputs-and-labels-container {
   display: flex;
   flex-direction: column;
@@ -446,5 +407,6 @@ mounted() {
 .New_Working{
   height: 20px;
   margin-bottom: 15px;
+
 }
 </style>

@@ -34,7 +34,7 @@
           <form @submit.prevent="addDepartment">
             <label for="Name">Department Name:</label>
             <input type="text" id="Name" v-model="newDepartmentName" required>
-            <button type="submit">Submit</button>
+            <button class="submit-btn" type="submit">Submit</button>
           </form>
         </div>
       </div>
@@ -189,7 +189,7 @@ export default {
 }
 
 .department-table thead tr {
-	background-color: #4386dd;
+	background-color: #FF8FA3;
 	color: #ffffff;
 	text-align: left;
 }
@@ -208,7 +208,7 @@ export default {
 }
 
 .department-table tbody tr:last-of-type {
-	border-bottom: 2px solid #4386dd;
+	border-bottom: 2px solid #FF8FA3;
 }
 
 .department-table tbody tr.active-row {
@@ -244,67 +244,15 @@ export default {
 }
 
 .modal-content {
-	background: white;
-	padding: 20px;
-	border-radius: 5px;
+	background-color: #fff0f3;
+  border: 1px solid #ff4d6d;
+  padding: 8px;
+  width: 100%;
+  margin: 5px 0;
 }
 
 .close {
 	float: right;
 	cursor: pointer;
-}
-
-.add-record-button {
-	background-color: #93c768; 
-	border: none;
-	color: white;
-	text-align: center;
-	height: 100%;
-	text-decoration: none;
-	font-size: 16px;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
-	margin-left: 5px;
-}
-
-.add-record-button:hover {
-	background-color: #48d65b;
-}
-
-.edit-record-button {
-	padding-left: 10px;
-	background-color: #d1cf3d;
-	border: none;
-	color: white;
-	padding: 5px 15px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 16px;
-	margin: 0px 2px;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
-}
-
-.edit-record-button:hover {
-	background-color: #ebac00;
-}
-
-.delete-record-button {
-	padding-left: 10px;
-	background-color: #df4a4a; 
-	color: white;
-	padding: 5px 15px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 16px;
-	margin: 0px 2px;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
-}
-
-.delete-record-button:hover {
-	background-color: #9e1e1e;
 }
 </style>
