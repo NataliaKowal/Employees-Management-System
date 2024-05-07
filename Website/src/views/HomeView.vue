@@ -1,5 +1,7 @@
 <template>
-  <h1>Strona główna</h1>
+  <div id="welcome-message">
+    <h1>Witaj w systemie zarządzania bazą pracowników firmy!</h1>
+  </div>
 </template>
 
 <script>
@@ -7,12 +9,26 @@
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 #app {
   display: flex;
   min-height: 100vh;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f0f0f0; 
+}
+
+#welcome-message {
+  width: 100%; 
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  min-height: 100vh; 
+  font-size: 24px; 
+  background-color: #FFF0F3; 
+  font-family: 'Poppins';
 }
 
 nav {
@@ -21,10 +37,10 @@ nav {
   align-items: flex-start;
   justify-content: start;
   padding: 20px;
-  background-color: #c9184A; /* Granatowy kolor paska nawigacyjnego */
+  background-color: #c9184A; 
   color: white;
   height: 100vh;
-  width: 200px; /* szerokość paska nawigacyjnego */
+  width: 200px; 
 }
 
 nav a {
@@ -36,11 +52,11 @@ nav a {
 }
 
 nav a:hover {
-  background-color: #FF8FA3; /* Nieco jaśniejszy niebieski dla efektu hover */
+  background-color: #FF8FA3; 
 }
 
 nav a.router-link-exact-active {
-  background-color: #ff4d6d; /* Ciemniejszy niebieski dla aktywnego linku */
+  background-color: #FF8FA3; 
   color: white;
 }
 
@@ -49,17 +65,17 @@ nav a.router-link-exact-active {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center; /* Centrowanie tekstu */
-  background-color: #add8e6; /* Jasnoniebieskie tło dla głównej zawartości */
-}
+  text-align: center; 
+  background-color: #FF8FA3; 
 
 .main-content {
-  max-width: 600px; /* Ograniczenie szerokości treści, aby była bardziej czytelna */
+  max-width: 600px; 
+}
 }
 
 h1 {
-  text-align: center; /* Wyśrodkowanie tekstu */
-  margin-top: 20px; /* Dodatkowy margines górny, jeśli potrzebny */
-  width: 100%; /* Zapewnia, że tytuł jest wyśrodkowany w kontenerze */
+  text-align: center; 
+  margin-top: 20px; 
+  width: 100%; 
 }
 </style>
