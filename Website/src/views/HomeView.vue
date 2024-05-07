@@ -67,15 +67,21 @@ nav a.router-link-exact-active {
   align-items: center;
   text-align: center; 
   background-color: #FF8FA3; 
+}
 
 .main-content {
   max-width: 600px; 
-}
 }
 
 h1 {
   text-align: center; 
   margin-top: 20px; 
   width: 100%; 
+  border: 2px solid #A4133C; /* Dodanie ramki */
+  padding: 15px; /* Dodatkowe wewnętrzne odstępy, aby tekst nie był zbyt blisko ramki */
+  box-sizing: border-box; /* Zapewnia, że padding i border nie zwiększają rozmiaru elementu */
+  display: inline-block; /* Umożliwia zastosowanie paddingu i marginesów */
+  margin-left: 15px;
+  margin-right: 15px;
 }
 </style>
