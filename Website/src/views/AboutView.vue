@@ -4,6 +4,7 @@
     <h1>This is an about page</h1>
     <div class="project-description">
       <p>This project was developed using a combination of modern technologies and frameworks. The front-end is built with <strong>Vue.js</strong>,providing a dynamic and responsive user interface. On the server side, <strong>Flask</strong>, a lightweight WSGI web application framework written in <strong>Python</strong>, is used to handle requests and serve data. Data persistence is achieved through <strong>SQLite</strong>, a self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine.</p>
+      <p>The entire project is available on GitHub under the name "Employees-Management-System": <a href="https://github.com/NataliaKowal"> <strong> GitHubLink </strong></a>.</p>
     </div>
   </div>
 </template>
