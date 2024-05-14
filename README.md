@@ -4,6 +4,8 @@ This project was developed using a combination of modern technologies and framew
 
 ## Home Page
 
+Ten kod jest częścią interfejsu użytkownika dla systemu zarządzania bazą pracowników firmy. Został zaprojektowany z myślą o zapewnieniu estetycznego i intuicyjnego dostępu do funkcji systemu zarządzania.
+
 ![test.img](./img/home.png)
 
 ## View of the employees
