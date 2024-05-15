@@ -22,4 +22,4 @@ System Zarządzania Departamentami, zapewnia przyjazny interfejs do zarządzania
 
 ## Employee Education Search
 
-![test.img](./img/Departments_View.png)
+![tekst alternatywny jak nie ma takiego zdjecia](./img/fota.png)
