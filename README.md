@@ -1,6 +1,6 @@
 # Description
 
-This project was developed using a combination of modern technologies and frameworks. The front-end is built with `<strong>` Vue.js `</strong>`,providing a dynamic and responsive user interface. On the server side, `<strong>`Flask `</strong>`, a lightweight web application framework written in `<strong>`Python`</strong>`, is used to handle requests and serve data. Data persistence is achieved through `<strong>`SQLite `</strong>`, a self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine.
+This project was developed using a combination of modern technologies and frameworks. The front-end is built with <strong> Vue.js </strong>,providing a dynamic and responsive user interface. On the server side, <strong>Flask </strong>, a lightweight web application framework written in <strong> Python</strong>, is used to handle requests and serve data. Data persistence is achieved through <strong> SQLite </strong>, a self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine.
 
 ## Home Page
 
@@ -22,4 +22,6 @@ System Zarządzania Departamentami, zapewnia przyjazny interfejs do zarządzania
 
 ## Employee Education Search
 
-![tekst alternatywny jak nie ma takiego zdjecia](./img/fota.png)
+Ta strona służy wyszukiwania i zarządzania stopniami naukowymi pracowników. Użytkownicy mogą przeglądać tabelę z danymi stopni naukowych, filtrować listę poprzez wprowadzenie zapytania wyszukiwania oraz korzystać z modali do dodawania, edytowania lub usuwania rekordów stopni naukowych. System obejmuje wiązanie danych i właściwości obliczeniowe, aby dynamicznie filtrować stopnie naukowe na podstawie zapytania wyszukiwania. Kluczowe metody ułatwiają pobieranie rekordów stopni naukowych, dodawanie nowych, edytowanie istniejących danych oraz usuwanie rekordów. Aplikacja pobiera również dane z serwera, zapewniając aktualność informacji. Interfejs jest stylizowany za pomocą CSS, aby zapewnić responsywność i estetyczny wygląd, z układami siatki, przejściami przycisków oraz niestandardowymi paskami przewijania dla modali. Projekt korzysta z axios do wykonywania żądań HTTP do serwera. Aby skonfigurować projekt, należy sklonować repozytorium, zainstalować zależności i uruchomić serwer deweloperski. System oferuje kompleksowe i funkcjonalne rozwiązanie do efektywnego zarządzania danymi stopni naukowych pracowników.
+
+![tekst alternatywny jak nie ma takiego zdjecia](./img/employee.png)
