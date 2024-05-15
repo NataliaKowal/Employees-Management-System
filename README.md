@@ -2,7 +2,7 @@
 
 This project was developed using a combination of modern technologies and frameworks. The front-end is built with <strong> Vue.js </strong>,providing a dynamic and responsive user interface. On the server side, <strong>Flask </strong>, a lightweight web application framework written in <strong> Python</strong>, is used to handle requests and serve data. Data persistence is achieved through <strong> SQLite </strong>, a self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine.
 
-# Front-end Project
+# Front-end
 
 The Front-end Project is a comprehensive system for managing company data, including employees, departments, and academic degrees. It consists of an HTML template for structure, a JavaScript script for future logic, and CSS styles for aesthetics and responsiveness. Users can view, filter, and manage data through interfaces with modals for adding, editing, and deleting records. The system uses axios for server communication and CSS for styling. To set up the project, clone the repository, install dependencies, and run the development server.
 
@@ -16,7 +16,14 @@ The Company Employee Database Management System consists of three main sections:
 
 The Employee Management System is designed to provide a user-friendly interface for managing employee data. Users can view a table of employee details, filter the list by entering a search query, and use modals to add, edit, or delete employee records. The system includes data binding and computed properties to dynamically filter employees based on the search query. Key methods facilitate fetching employee records, adding new employees, editing existing data, and deleting records. The application also fetches department and degree data from the server and provides utility methods to retrieve department and degree names based on their IDs. The interface is styled using CSS to ensure responsiveness and an attractive appearance, utilizing grid layouts, button transitions, and custom scrollbars for modals. The project relies on axios for making HTTP requests to the server. To set up the project, clone the repository, install dependencies, and run the development server. This system offers a comprehensive and functional solution for efficient employee data management.
 
-![test.img](./img/employees.png)
+![test.img](./img/add.png)
+
+# Functionality of the "Add New Employee" Button
+The "Add New Employee" button, displayed in the provided images, serves to open a modal form where users can input details for a new employee. This modal form includes fields for the employee's name, surname, PESEL, department, degree, room number, and salary. Upon filling out the form and clicking the "Submit" button, the entered data is sent to the server to create a new employee record. If the user decides not to add a new employee, they can click the "Cancel" button to close the modal without saving any changes. This feature ensures that users can efficiently add new employees to the system while maintaining data integrity and ease of use.
+
+![test.img](./img/add_new.png)
+
+![test.img](./img/add2.png)
 
 ## Departments View
 
