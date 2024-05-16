@@ -18,7 +18,7 @@ The Employee Management System is designed to provide a user-friendly interface 
 
 ![test.img](./img/add.png)
 
-# Functionality of the "Add New Employee" Button
+## Functionality of the "Add New Employee" Button
 The "Add New Employee" button, displayed in the provided images, serves to open a modal form where users can input details for a new employee. This modal form includes fields for the employee's name, surname, PESEL, department, degree, room number, and salary. Upon filling out the form and clicking the "Submit" button, the entered data is sent to the server to create a new employee record. If the user decides not to add a new employee, they can click the "Cancel" button to close the modal without saving any changes. This feature ensures that users can efficiently add new employees to the system while maintaining data integrity and ease of use.
 
 ![test.img](./img/add_new.png)
