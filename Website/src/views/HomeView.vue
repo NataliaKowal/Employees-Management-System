@@ -1,6 +1,6 @@
 <template>
   <div class="page-container">
-    <div class="content-container info-section">
+    <div class="content-container">
       <h1>Baza danych pracowników firmy</h1>
       <p class="description">
         Baza danych pracowników to zbiór wszystkich danych i informacji o pracownikach firmy,
@@ -55,17 +55,13 @@ body, html {
 }
 
 .content-container {
+  margin-left: 25%;
+  margin-right: 25%;
   background-color: #d81b60;
   padding: 40px;
   border-radius: 10px;
   color: white;
-  max-width: 800px;
-  width: 100%;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.info-section {
-  text-align: left; /* Przywrócenie wyrównania tekstu do lewej */
 }
 
 h1, h2 {
@@ -112,9 +108,4 @@ h1, h2 {
   color: white;
 }
 
-@media (max-width: 600px) {
-  .content-container {
-    padding: 20px;
-  }
-}
 </style>

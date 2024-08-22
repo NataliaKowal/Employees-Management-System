@@ -11,6 +11,15 @@
 
 <style>
 
+#app {
+  display: flex;
+  min-height: 100vh;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f0f0f0; 
+}
+
 body{
   font-family: Arial, Helvetica, sans-serif;
 }

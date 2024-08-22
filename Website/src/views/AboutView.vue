@@ -13,14 +13,6 @@
 </script>
 
 <style>
-#app {
-  display: flex;
-  min-height: 100vh;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #f0f0f0; 
-}
 
 #content-wrapper {
   max-width: 800px;
@@ -41,17 +33,6 @@
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   text-align: justify;
   line-height: 1.6;
-}
-
-#welcome-message {
-  width: 100%; 
-  display: flex;
-  justify-content: center; 
-  align-items: center; 
-  min-height: 100vh; 
-  font-size: 24px; 
-  background-color: #FFF0F3; 
-  margin-left: 10px;
 }
 
 nav {
@@ -81,19 +62,6 @@ nav a:hover {
 nav a.router-link-exact-active {
   background-color: #FF8FA3; 
   color: white;
-}
-
-.content {
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center; 
-  background-color: #FF8FA3; 
-
-.main-content {
-  max-width: 600px; 
-}
 }
 
 h1 {
