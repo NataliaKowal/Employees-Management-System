@@ -1,7 +1,7 @@
 <template>
   <div class="page-container">
     <div class="content-container info-section">
-      <h1>Baza danych pracowników</h1>
+      <h1>Baza danych pracowników firmy</h1>
       <p class="description">
         Baza danych pracowników to zbiór wszystkich danych i informacji o pracownikach firmy,
         przechowywanych i zarządzanych w określonej formie.
@@ -19,7 +19,9 @@
         <li>Dostęp do historycznych danych dotyczących zatrudnienia;</li>
         <li>Przygotowywania i wysyłki listów weryfikujących zatrudnienie.</li>
       </ul>
-      <button class="cta-button" @click="rozpocznij">Dowiedz się więcej</button>
+      <div class="button-container">
+        <button class="cta-button" @click="dowiedzsieWiecej">Dowiedz się więcej</button>
+      </div>
     </div>
   </div>
 </template>
@@ -28,9 +30,8 @@
 export default {
   name: 'HomeView',
   methods: {
-    rozpocznij() {
-      console.log('Kliknięto przycisk "Dowiedz się więcej"');
-      // Tutaj można dodać logikę, która ma się wykonać po kliknięciu przycisku
+    dowiedzsieWiecej() {
+      window.open('https://peopleforce.io/pl/product-updates/new-leave-request-page-gmail-integration', '_blank');
     }
   }
 }
@@ -64,7 +65,7 @@ body, html {
 }
 
 .info-section {
-  text-align: left;
+  text-align: left; /* Przywrócenie wyrównania tekstu do lewej */
 }
 
 h1, h2 {
@@ -78,7 +79,7 @@ h1, h2 {
 }
 
 .features-list {
-  padding-left: 20px;
+  padding-left: 20px; /* Przywrócenie domyślnego paddingu listy */
   margin-bottom: 20px;
 }
 
@@ -86,10 +87,15 @@ h1, h2 {
   margin-bottom: 10px;
 }
 
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
 .cta-button {
-  display: block;
+  display: inline-block;
   margin: 20px auto 0;
-  padding: 12px 24px;
+  padding: 10px 20px;
   background-color: white;
   color: #d81b60;
   border: none;
@@ -97,6 +103,7 @@ h1, h2 {
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
+  text-decoration: none;
   transition: background-color 0.3s, color 0.3s;
 }
 
