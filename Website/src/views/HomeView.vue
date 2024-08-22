@@ -21,18 +21,6 @@
       </ul>
       <button class="cta-button" @click="rozpocznij">Dowiedz się więcej</button>
     </div>
-    <div class="content-container nav-section">
-      <h1>Menu nawigacyjne</h1>
-      <nav class="navigation-menu">
-        <ul>
-          <li class="active">Home</li>
-          <li>Employees</li>
-          <li>Departments</li>
-          <li>Degrees</li>
-          <li>About</li>
-        </ul>
-      </nav>
-    </div>
   </div>
 </template>
 
@@ -63,25 +51,20 @@ body, html {
   align-items: center;
   min-height: 100vh;
   padding: 20px;
-  flex-direction: column;
 }
 
 .content-container {
   background-color: #d81b60;
-  padding: 20px;
-  border-radius: 5px;
-  margin-bottom: 20px;
+  padding: 40px;
+  border-radius: 10px;
   color: white;
   max-width: 800px;
   width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .info-section {
   text-align: left;
-}
-
-.nav-section {
-  text-align: center;
 }
 
 h1, h2 {
@@ -105,14 +88,15 @@ h1, h2 {
 
 .cta-button {
   display: block;
-  margin: 20px auto;
-  padding: 10px 20px;
+  margin: 20px auto 0;
+  padding: 12px 24px;
   background-color: white;
   color: #d81b60;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
+  font-weight: bold;
   transition: background-color 0.3s, color 0.3s;
 }
 
@@ -121,38 +105,9 @@ h1, h2 {
   color: white;
 }
 
-.navigation-menu ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.navigation-menu li {
-  padding: 10px 15px;
-  margin: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  border-radius: 3px;
-}
-
-.navigation-menu li:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.navigation-menu li.active {
-  background-color: #ff80ab;
-}
-
 @media (max-width: 600px) {
   .content-container {
-    padding: 15px;
-  }
-  
-  .navigation-menu ul {
-    flex-direction: column;
+    padding: 20px;
   }
 }
 </style>
