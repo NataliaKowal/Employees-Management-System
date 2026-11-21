@@ -2,17 +2,14 @@ import sqlite3
 import json
 
 class Department:
-    def __init__(self):
-        self.Id = 0 
-        self.Name = "Name"
-    
-    def __init__(self, new_Id, new_Name):
-        self.Id = new_Id 
+    def __init__(self, new_Id=0, new_Name="Name"):
+        self.Id = new_Id
         self.Name = new_Name
-    
-    def __init__(self, tuple):
-        self.Id = tuple[0] 
-        self.Name = tuple[1]
+
+    @classmethod
+    def from_tuple(cls, row):
+        """Tworzy obiekt z wiersza bazy danych, np. (1, "Magister")."""
+        return cls(row[0], row[1])
 
     def __str__(self):
         return f"Id: {self.Id}, Name: {self.Name}"
@@ -62,8 +59,10 @@ def add_department (DB_path, name):
             cur = con.cursor()
             cur.execute("INSERT INTO Department (Name) VALUES (?)", (name, ))
             con.commit()
+            return True
     except sqlite3.Error as e: 
         print(f"error: {e}")
+        return False
 
 
 def edit_department (DB_path, name, Id):
@@ -84,8 +83,10 @@ def edit_department (DB_path, name, Id):
             cur = con.cursor()
             cur.execute("UPDATE Department SET Name = ? WHERE Id = ?", (name, Id,  ))
             con.commit()
+            return True
     except sqlite3.Error as e: 
         print(f"error: {e}")
+        return False
 
 def delete_department (DB_path, Id):
     try: 
@@ -93,5 +94,7 @@ def delete_department (DB_path, Id):
             cur = con.cursor()
             cur.execute("DELETE FROM Department WHERE Id = ?", (Id, ))
             con.commit()
+            return True
     except sqlite3.Error as e: 
         print(f"error: {e}")
+        return False
