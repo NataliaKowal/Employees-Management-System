@@ -2,18 +2,9 @@ import sqlite3
 import json
 
 class Employee:
-    def __init__(self):
-        self.Id = 0 
-        self.Name = "Name"
-        self.Surname = "Surname"
-        self.PESEL_number = 0
-        self.Degree_Id = -1
-        self.Departemnt_Id = -1
-        self.Room_number = -1
-        self.Salary = 0.0
-    
-    def __init__(self, new_Id, new_Name, new_Surname, new_PESEL_number, new_Degree_Id, new_Departemnt_Id, new_Room_number, new_Salary):
-        self.Id = new_Id 
+    def __init__(self, new_Id=0, new_Name="Name", new_Surname="Surname", new_PESEL_number=0,
+                 new_Degree_Id=-1, new_Departemnt_Id=-1, new_Room_number=-1, new_Salary=0.0):
+        self.Id = new_Id
         self.Name = new_Name
         self.Surname = new_Surname
         self.PESEL_number = new_PESEL_number
@@ -21,7 +12,12 @@ class Employee:
         self.Departemnt_Id = new_Departemnt_Id
         self.Room_number = new_Room_number
         self.Salary = new_Salary
-    
+
+    @classmethod
+    def from_tuple(cls, row):
+        """Tworzy obiekt z wiersza bazy danych (kolejność kolumn jak w tabeli Employees)."""
+        return cls(*row)
+
 def get_all_employees (DB_path):
     """
     Opis: 
@@ -78,9 +74,10 @@ def add_employee (DB_path, Name, Surname, PESEL_number, Degree_Id, Departemnt_Id
                 VALUES (?, ?, ?, ?, ?, ?, ?)"""
             cur.execute(querry, (Name, Surname, PESEL_number, Degree_Id, Departemnt_Id, Room_number, Salary ))
             con.commit()
-            print(f"Added new employee to database with data: Name: {Name}, Surname: {Surname}, PESEL_number: {PESEL_number}, Degree_Id: {Degree_Id}, Departemnt_Id: {Departemnt_Id}, Room_number: {Room_number}, Salary: {Salary}")
+            return True
     except sqlite3.Error as e: 
         print(f"error: {e}")
+        return False
 
 def edit_employee (DB_path, Id, Name, Surname, PESEL_number, Degree_Id, Departemnt_Id, Room_number, Salary):
     """
@@ -112,8 +109,10 @@ def edit_employee (DB_path, Id, Name, Surname, PESEL_number, Degree_Id, Departem
                 WHERE Id = ?"""
             cur.execute(querry, (Name, Surname, PESEL_number, Degree_Id, Departemnt_Id, Room_number, Salary, Id))
             con.commit()
+            return True
     except sqlite3.Error as e: 
         print(f"error: {e}")
+        return False
 
 def delete_employee (DB_path, Id):
     """
@@ -134,5 +133,7 @@ def delete_employee (DB_path, Id):
             cur = con.cursor()
             cur.execute(querry, (Id, ))
             con.commit()
+            return True
     except sqlite3.Error as e: 
         print(f"error: {e}")
+        return False
